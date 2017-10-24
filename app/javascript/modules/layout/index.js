@@ -8,15 +8,18 @@ const App = (props) => (
   <Router>
     <div className='App'>
       <Header />
-      <div className='Routes'>
-        <Switch>
-          {routes.map((route, i) => (
-            route.path === '/' ?
-              <Route exact path={route.path} component={route.component} key={i} /> :
-              <Route path={route.path} component={route.component} key={i} />
-          ))}
-        </Switch>
-      </div>
+      { props.ageVerified && props.ageVerified === true ?
+          <div className="AgeGate">AGE GATE<div> :
+          <div className='Routes'>
+            <Switch>
+              {routes.map((route, i) => (
+                route.path === '/' ?
+                  <Route exact path={route.path} component={route.component} key={i} /> :
+                  <Route path={route.path} component={route.component} key={i} />
+              ))}
+            </Switch>
+          </div>
+      }
     </div>
   </Router>
 
