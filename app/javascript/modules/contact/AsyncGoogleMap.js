@@ -11,8 +11,9 @@ const AsyncGoogleMap = withScriptjs(
         defaultCenter={{ lat: props.markers[0].position.lat, lng: props.markers[0].position.lng }}
         onClick={props.onMapClick}
       >
-        {props.markers.map(marker => (
+        {props.markers.map((marker, i) => (
           <Marker
+            key={i}
             {...marker}
             onRightClick={() => props.onMarkerRightClick(marker)}
           />

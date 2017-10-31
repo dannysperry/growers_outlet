@@ -1,7 +1,7 @@
-import { default as React, Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import AsyncGoogleMap from './AsyncGoogleMap'
 
-export default class ContactMap extends Component {
+class ContactMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,3 +77,8 @@ export default class ContactMap extends Component {
     )
   }
 }
+
+
+
+
+export default ContactMap

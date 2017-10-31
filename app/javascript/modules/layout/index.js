@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import routes from 'config/routes'
+import PropTypes from 'prop-types'
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import routes from 'config/routes'
 import Header from '../header'
 
 const App = (props) => (
@@ -9,7 +11,7 @@ const App = (props) => (
     <div className='App'>
       <Header />
       { props.ageVerified && props.ageVerified === true ?
-          <div className="AgeGate">AGE GATE<div> :
+          <div className="AgeGate">AGE GATE</div> :
           <div className='Routes'>
             <Switch>
               {routes.map((route, i) => (
@@ -22,7 +24,10 @@ const App = (props) => (
       }
     </div>
   </Router>
-
 )
+
+App.propTypes = {
+  ageVerified: PropTypes.bool
+}
 
 export default App

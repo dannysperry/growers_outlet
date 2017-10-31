@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavBar from '../navbar'
 
-const Header = (props) => (
+const Header = () => (
   <header>
     <div className="container">
       <div className="row">

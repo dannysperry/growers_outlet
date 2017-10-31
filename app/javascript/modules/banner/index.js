@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import PropTypes from 'props-types'
 
 class Banner extends Component {
   render() {
-    let sectionId, classNames, colSizes, title, subtitle = null
+    let sectionId, classNames, columnClasses, title, subtitle = null
     if (this.props.big) {
       sectionId = 'BannerBig'
       classNames = 'animated fadeInUp'
-      colSizes = "col-md-10 col-md-offset-2"
+      columnClasses = "col-md-10 col-md-offset-2"
     } else {
       sectionId = 'Banner'
-      classNames = ''
-      colSizes = 'col-md-12'
+      columnClasses = 'col-md-12'
     }
 
     title = <h1 className={classNames}>{this.props.title}</h1>
@@ -21,7 +20,7 @@ class Banner extends Component {
       <section id={sectionId} className="Banner">
         <div className="container">
           <div className="row">
-            <div className={colSizes}>
+            <div className={columnClasses}>
               <div className="block">
                 { title }
                 { subtitle }
@@ -32,6 +31,12 @@ class Banner extends Component {
       </section>
     )
   }
+}
+
+Banner.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  big: PropTypes.bool.isRequired
 }
 
 export default Banner

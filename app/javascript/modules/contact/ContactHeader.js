@@ -2,7 +2,7 @@ import React from 'react'
 
 import ContactForm from './ContactForm'
 
-const ContactHeader = props => {
+const ContactHeader = () => {
   return(
     <section className="ContactHeader Banner" id="global-header">
       <div className="container">

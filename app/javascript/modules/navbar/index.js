@@ -14,7 +14,8 @@ class NavBar extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(event) {
+  handleClick(e) {
+    e.preventDefault()
     this.setState({
       collapsed: !this.state.collapsed
     })

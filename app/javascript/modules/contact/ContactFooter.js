@@ -1,25 +1,28 @@
 import React from 'react'
 
-import ContactMap from './ContactMap'
-import ContactInfo from './ContactInfo'
-import SocialIcons from './SocialIcons'
+import { ContactMap as Map } from './ContactMap'
+import { ContactInfo as Info } from './ContactInfo'
+import { SocialIcons as Icons } from './SocialIcons'
 
-const ContactFooter = props => {
+const ContactFooter = () => {
   return(
     <div className="ContactFooter container">
       <div id="contact-box" className="row">
         <div className="col-md-6 col-sm-12">
           <div className="block">
             <h2>Save our contact information</h2>
-            <ContactInfo />
+            <Info
+              address="613 Montana Ave #2, South Bend, WA 98586"
+              email="growersoutlet1@gmail.com"
+              phone="(360) 875-8189" />
 
-            <SocialIcons />
+            <Icons />
           </div>
         </div>
         <div className="col-md-6 col-sm-12">
           <div className="block">
             <h2>Google Us</h2>
-            <ContactMap />
+            <Map />
           </div>
         </div>
       </div>

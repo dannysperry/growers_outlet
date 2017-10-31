@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SocialIcons = props => {
+const SocialIcons = () => {
   return (
     <ul className="SocialIcons">
       <li>

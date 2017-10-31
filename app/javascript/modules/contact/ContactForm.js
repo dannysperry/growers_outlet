@@ -1,10 +1,9 @@
-import React, { createClass, Component } from 'react'
-import { render } from 'react-dom'
+import React, { Component } from 'react'
 import axios from 'axios'
 
 class ContactForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super()
     this.state = {
       email: '',
       name: '',
@@ -33,12 +32,12 @@ class ContactForm extends Component {
       description: this.state.description
     }
     axios.post('/contact', params)
-      .then(function (response) {
-        // console.log(response)
-      })
-      .catch(function (error) {
-        // console.log(error)
-      });
+      // .then(function (response) {
+      //   // console.log(response)
+      // })
+      // .catch(function (error) {
+      //   // console.log(error)
+      // });
 
   }
 

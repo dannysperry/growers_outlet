@@ -2,7 +2,7 @@ import React from 'react'
 
 import ContactHeader from './ContactHeader'
 
-const Contact = props => {
+const Contact = () => {
   return(
     <section className="Contact" id="contact-form">
       <ContactHeader />

@@ -3,7 +3,7 @@ import React from 'react'
 import Banner from '../banner'
 import ContactFooter from '../contact/ContactFooter'
 
-const Home = (props) => (
+const Home = () => (
   <div className='Home'>
     <Banner
       big={true}
