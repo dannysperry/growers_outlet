@@ -2,6 +2,7 @@
   "name": "growers_outlet_2",
   "private": true,
   "scripts": {
+    "lint": "yarn run eslint -- --ext .js --ext .jsx app/javascript",
     "yarn:install": "echo 'Beginning yarn install!' && yarn install && echo 'Done installing yarn!'",
     "clean:local": "echo 'Beginning cleaning in local environment!' && yarn clean && rm -rf .yarnclean && rm -dfr node_modules/ && echo 'Done cleaning local environment!' && yarn yarn:install",
     "prod:clean": "echo 'Beginning cleaning in production environment!' && rm -Rf 'public/packs' && rm -Rf 'public/assets' && echo 'Done cleaning production environment!'",
@@ -56,6 +57,14 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0",
     "webpack-dev-server": "^2.6.1"
   }
 }
