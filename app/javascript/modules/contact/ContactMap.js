@@ -57,18 +57,6 @@ class ContactMap extends Component {
   render() {
     return(
       <AsyncGoogleMap
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBZ8_pTTeGFMRqJSYZsS4b3PoQ_NEiP--c"
-        loadingElement={
-          <div>
-            Loading...
-          </div>
-        }
-        containerElement={
-          <div className='google_map--container' />
-        }
-        mapElement={
-          <div className='google_map--canvas' />
-        }
         onMapLoad={this.handleMapLoad}
         onMapClick={this.handleMapClick}
         markers={this.state.markers}

@@ -10,5 +10,8 @@
       "modules": true
     }
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": 0
+  }
 }

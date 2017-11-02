@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'props-types'
+import PropTypes from 'prop-types'
 
 class Banner extends Component {
   render() {

@@ -1,26 +1,31 @@
 import React from 'react'
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import withScriptjs from 'react-google-maps/lib/async/withScriptjs'
+import { compose, withProps } from "recompose"
+import { withGoogleMap, withScriptjs, GoogleMap, Marker } from 'react-google-maps'
 
-const AsyncGoogleMap = withScriptjs(
-  withGoogleMap(
-    props => (
-      <GoogleMap
-        ref={props.onMapLoad}
-        defaultZoom={18}
-        defaultCenter={{ lat: props.markers[0].position.lat, lng: props.markers[0].position.lng }}
-        onClick={props.onMapClick}
-      >
-        {props.markers.map((marker, i) => (
-          <Marker
-            key={i}
-            {...marker}
-            onRightClick={() => props.onMarkerRightClick(marker)}
-          />
-        ))}
-      </GoogleMap>
-    )
-  )
+const AsyncGoogleMap = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyBZ8_pTTeGFMRqJSYZsS4b3PoQ_NEiP--c",
+    loadingElement: <div>Loading...</div>,
+    containerElement: <div className='google_map--container' />,
+    mapElement: <div className='google_map--canvas' />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(({onMapLoad, onMapClick, onMarkerRightClick, markers}) =>
+  <GoogleMap
+    ref={onMapLoad}
+    defaultZoom={18}
+    defaultCenter={markers[0].position}
+    onClick={onMapClick}
+  >
+    {markers.map((marker, i) => (
+      <Marker
+        key={i}
+        {...marker}
+        onRightClick={() => onMarkerRightClick(marker)}
+      />
+    ))}
+  </GoogleMap>
 )
 
 

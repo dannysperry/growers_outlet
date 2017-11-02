@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ContactMap as Map } from './ContactMap'
-import { ContactInfo as Info } from './ContactInfo'
-import { SocialIcons as Icons } from './SocialIcons'
+import { default as Map } from './ContactMap'
+import { default as Info } from './ContactInfo'
+import { default as Icons } from './SocialIcons'
 
 const ContactFooter = () => {
   return(
