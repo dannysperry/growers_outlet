@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { navRoutes } from 'config/routes'
 
 const NavItems = () => (
-  <ul className="NavItems nav navbar-nav navbar-right">
+  <ul className="NavItems nav navbar-right">
     {navRoutes.map(route => (
       <li key={route.key}>
         <Link to={route.path}>

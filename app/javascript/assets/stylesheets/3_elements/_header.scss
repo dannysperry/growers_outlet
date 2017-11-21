@@ -1,9 +1,13 @@
 header {
   background-color: $c-dark_blue;
 
-  margin-bottom: 50px;
-}
+  width: 100%;
+  min-height: 10vh;
+  max-height: 10vh;
+  height: 10vh;
 
-.Routes {
-  margin-top: -50px;
+  div, nav {
+    height: inherit;
+    max-height: inherit;
+  }
 }

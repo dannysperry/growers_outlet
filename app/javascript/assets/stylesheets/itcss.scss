@@ -5,7 +5,8 @@
 // Examples of global settings might be things like the base font size, colour palettes, config (for example, $environment: dev;) and so on.
 @import "0_settings/breakpoints",
         "0_settings/colors",
-        "0_settings/fonts";
+        "0_settings/fonts",
+        "0_settings/sizes";
 
 // 1. Tools
 // The next layer houses your globally available tooling – namely mixins and functions. Any mixin or function that does not need accessing globally should belong in the partial to which it relates. The Tools layer comes after the Settings layer because a mixin may require one of the global settings as a default parameter. Examples of global tools might be gradient mixins, font-sizing mixins and so on.
@@ -47,7 +48,9 @@
 // The Components layer is where we begin to style recognisable pieces of UI. We're still binding onto classes here, so our specificity hasn't yet increased. However, this layer is more explicit than the last one in that we are now styling explicit, designed pieces of the DOM.
 // We shouldn't find any selectors with a lower specificity than one class in this layer. This is where the majority of your work will happen after initial project set-up. Adding new components and features usually makes up the vast majority of development.
 // ex: nav, carousel,
-@import "5_components/Banner",
+@import "5_components/App",
+        "5_components/Routes",
+        "5_components/Banner",
         "5_components/ContactFooter",
         "5_components/ContactHeader",
         "5_components/ContactInfo",

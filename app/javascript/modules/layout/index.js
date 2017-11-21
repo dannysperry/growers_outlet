@@ -1,80 +1,87 @@
 /* eslint-env browser */
 import React, { Component } from 'react'
-
+import { instanceOf } from 'prop-types'
+import { withCookies, Cookies } from 'react-cookie'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import routes from 'config/routes'
 import Header from '../header'
 import Gate from '../gate'
+import { updateAgeVerification } from './layout_services'
 
-import * as Cookies from 'js-cookie'
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      ageVerified: false,
-      age: "18",
-      errorMessage: ''
-    }
-    console.log(this.state.age)
 
+    const cookies = props.cookies
+
+    this.state = {
+      ageVerified: cookies.get('ageVerified') || 'false'
+    }
+
+    this.updateAgeVerification = updateAgeVerification.bind(this)
     this.handleAgeSubmit = this.handleAgeSubmit.bind(this)
-    this.handleAgeChange = this.handleAgeChange.bind(this)
   }
 
   handleAgeSubmit(event) {
-    event.preventDefault()
-    if (parseInt(this.state.age) >= 21) {
-      Cookies.set('ageVerified', true)
-      this.setState({
-        ageVerified: true,
-        errorMessage: ''
-      })
-    } else {
-      Cookies.set('ageVerified', false)
-      this.setState({
-        ageVerified: false,
-        errorMessage: 'You must be 21 or older to enter.'
-      })
-    }
-  }
-
-  handleAgeChange(event) {
+    const { cookies } = this.props
     const target = event.target
     const value = target.value
+    const result = value === 'ageVerified'
 
+    cookies.set('ageVerified', result, { expires: this.updateAgeVerification(result) })
+    if (!result) return location.href = "https://lcb.wa.gov/mj2015/faqs_i-502"
     this.setState({
-      age: value
-    });
+      ageVerified: cookies.get('ageVerified')
+    })
   }
 
   render() {
-    let htmlBody = <Gate
-                    age={parseInt(this.state.age)}
-                    errorMessage={this.state.errorMessage}
-                    handleChange={this.handleAgeChange}
-                    handleSubmit={this.handleAgeSubmit} />
-    if (this.state.ageVerified) {
-      htmlBody = <div className='Routes'>
-                    <Switch>
-                      {routes.map((route, i) => (
-                        route.path === '/' ?
-                          <Route exact path={route.path} component={route.component} key={i} /> :
-                          <Route path={route.path} component={route.component} key={i} />
-                      ))}
-                    </Switch>
-                  </div>
-    }
+
+    const { ageVerified } = this.state
+    const rendered = (ageVerified === true.toString())
+      ? this.renderWeb()
+      : this.renderGate() // must use double equals for non type checking comparison
+
     return (
       <Router>
         <div className='App'>
-          <Header />
-          { htmlBody }
+          { rendered }
         </div>
       </Router>
     )
   }
+
+  renderGate() {
+    return (
+      <Gate
+        key='agegate'
+        handleSubmit={this.handleAgeSubmit} />
+    )
+  }
+
+  renderWeb() {
+    return (
+      [
+        <Header key='header' />,
+        <div className='Routes' key='routes'>
+          <Switch>
+            {routes.map((route, i) => (
+              route.path === '/' ?
+                <Route exact path={route.path} component={route.component} key={`route_${i}`} /> :
+                <Route path={route.path} component={route.component} key={`route_${i}`} />
+            ))}
+          </Switch>
+        </div>
+      ]
+    )
+  }
 }
 
-export default App
+App.propTypes = {
+  cookies: instanceOf(Cookies).isRequired
+}
+
+export default withCookies(App)

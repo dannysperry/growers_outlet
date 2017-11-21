@@ -18,4 +18,32 @@ header {
 
 .navbar {
   margin: 0;
+
+  button {
+    height: inherit;
+  }
+
+  & > .container,
+  & > .container-fluid {
+    .navbar-brand {
+      @media (min-width: 768px) {
+        margin-left: 0;
+      }
+    }
+  }
+
+
+  &-brand {
+    padding: 0;
+    height: auto;
+    left: 0;
+    position: absolute;
+    top: 15px;
+  }
+}
+
+.navbar-header {
+  @media only screen and (max-width: 767px) {
+    float: right;
+  }
 }

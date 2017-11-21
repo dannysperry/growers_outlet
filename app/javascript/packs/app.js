@@ -1,6 +1,8 @@
 /* eslint-env browser */
 import React from 'react'
 import { render } from 'react-dom'
+import { CookiesProvider } from 'react-cookie'
+
 import App from '../modules/layout'
 
 import './main.scss'
@@ -8,5 +10,10 @@ import './main.scss'
 document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('root')
 
-  render(<App />, node)
+  render(
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>,
+    node
+  )
 })
