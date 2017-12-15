@@ -10,7 +10,8 @@
     "start": "bin/rails s",
     "prod:build": "echo 'Beginning production build with webpack!' && RAILS_ENV=production bin/webpack && echo 'Done building webpack for production environment and precompiling assets for rails!' && RAILS_ENV=production bin/rails assets:precompile && echo 'Finished production build!'",
     "prod:start": "echo 'Starting production server!' && RAILS_SERVE_STATIC_FILES=true RAILS_LOG_TO_STDOUT=true bin/rails s -e production",
-    "prod:local": "yarn clean:local && yarn prod:clean && yarn prod:build && yarn prod:start"
+    "prod:local": "yarn clean:local && yarn prod:clean && yarn prod:build && heroku local -e .env.prod.heroku",
+    "deploy": "git co master && yarn prod:build && git add . && git commit -m 'Building for prod' && git push"
   },
   "engines": {
     "node": ">=v8.9.2",
