@@ -9,7 +9,7 @@ const ContactFooter = () => {
     <div className="ContactFooter container">
       <div id="contact-box" className="row">
         <div className="col-md-6 col-sm-12">
-          <div className="block">
+          <div className="col-sm-12">
             <h2>Save our contact information</h2>
             <Info
               address="613 Montana Ave #2, South Bend, WA 98586"
@@ -20,7 +20,7 @@ const ContactFooter = () => {
           </div>
         </div>
         <div className="col-md-6 col-sm-12">
-          <div className="block">
+          <div className="col-md-12 col-sm-12">
             <h2>Google Us</h2>
             <Map />
           </div>

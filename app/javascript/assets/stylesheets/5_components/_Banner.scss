@@ -26,6 +26,7 @@
   padding-bottom: 107px;
   position: relative;
   background-attachment: fixed;
+  background: url('assets/images/banner-bg.jpg') no-repeat;
   @include overlay--green--gradiant();
 
   .block {

@@ -5,11 +5,11 @@ class Banner extends Component {
   render() {
     let sectionId, classNames, columnClasses, title, subtitle = null
     if (this.props.big) {
-      sectionId = 'banner BannerBig'
+      sectionId = 'BannerBig'
       classNames = 'animated fadeInUp'
       columnClasses = "col-md-10 col-md-offset-2"
     } else {
-      sectionId = 'banner Banner'
+      sectionId = 'Banner'
       columnClasses = 'col-md-12'
     }
 
